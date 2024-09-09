@@ -1,0 +1,42 @@
+<div class="container d-flex align-items-center justify-content-center vh-100">
+  <div class="mt-5 p-4 border rounded shadow">
+    <h2 class="text-center mb-4">Ingreso de Información</h2>
+    <form (ngSubmit)="buscarCliente()" #clienteForm="ngForm">
+      <div class="form-group">
+        <label for="tipoDocumento">Tipo de Documento:</label>
+        <select
+          id="tipoDocumento"
+          name="tipoDocumento"
+          [(ngModel)]="tipoDocumento"
+          required
+          class="form-control"
+        >
+          <option value="">Seleccione</option>
+          <option value="C">Cédula de Ciudadanía</option>
+          <option value="P">Pasaporte</option>
+        </select>
+      </div>
+      <div class="form-group mt-3">
+        <label for="numeroDocumento">Número de Documento:</label>
+        <input
+          id="numeroDocumento"
+          name="numeroDocumento"
+          [(ngModel)]="numeroDocumento"
+          (input)="formatearNumero()"
+          required
+          minlength="8"
+          maxlength="14"
+          type="text"
+          class="form-control"
+        />
+      </div>
+      <button
+        type="submit"
+        [disabled]="!clienteForm.valid"
+        class="btn btn-primary mt-3"
+      >
+        Buscar
+      </button>
+    </form>
+  </div>
+</div>
